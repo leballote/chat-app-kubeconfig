@@ -1,0 +1,13 @@
+This week I focused on the deployment on minikube
+
+On Monday I tought I solve my proxy problem, but apparently only solved it for development. Anyways, I also reviewed the general kubernetes concepts and created the pods of my services, which latter I would convert to development.
+
+On Tuesday I finished the deployments, sesrvices, configmaps and secrets for my microservices, but hardcoded the volumes.
+
+On Wednesday I prepared my presentation, and changed  my volumes to PVCs.
+
+On Thursday I finished all the graphql manifests and frontend manifests, and faced again a CORS problem, which I almost solved, but didn't work for subscriptions.
+
+Today I finally could make it solve it for subscriptions, but in the way I discovered a bug in one of the chats resolvers. 
+
+Currently I am reading documentation on Amazon EKS, and thinking on the changes that my local cluster will have to have, like a TSL certificate, and if I'll need read replicas (I hope not).

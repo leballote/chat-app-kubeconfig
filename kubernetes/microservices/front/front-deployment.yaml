@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+  labels:
+    microservice: front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      name: front
+      labels:
+        app: front
+    spec:
+      volumes:
+        - name: nginx-config-volume
+          configMap:
+            name: nginx-configmap
+      containers:
+        - name: front
+          image: leballote/chat_front
+          env:
+            # - name: PORT
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: chat-micro-configmap
+            #       key: port
+            - name: FRONT_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: front-general-configmap
+                  key: front_domain
+            - name: VITE_GRAPHQL_WS_URL
+              value: "ws://$(FRONT_DOMAIN)/subs"
+          # command: ["tail", "-f", "/dev/null"]
+          volumeMounts:
+            - name: nginx-config-volume
+              mountPath: /etc/nginx/conf.d
+              readOnly: true
+          ports:
+            - containerPort: 80
+              name: web-port
+              protocol: TCP
