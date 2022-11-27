@@ -41,6 +41,7 @@ spec:
                   name: auth-db-mongo-secrets
                   key: jwt_secret
           image: leballote/auth_service
+
           # command: ["tail", "-f", "/dev/null"]
           # resources:
           #   limits:
@@ -53,3 +54,16 @@ spec:
             - containerPort: 6002
               name: auth-port
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: auth-port
+            failureThreshold: 1
+            periodSeconds: 10
+
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: auth-port
+            failureThreshold: 30
+            periodSeconds: 10

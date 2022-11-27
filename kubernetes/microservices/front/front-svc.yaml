@@ -6,10 +6,16 @@ metadata:
   name: front-svc
 spec:
   ports:
+    - port: 443
+      name: https
+      protocol: TCP
+      targetPort: 443
+      nodePort: 32200
     - port: 80
+      name: http
       protocol: TCP
       targetPort: 80
-      nodePort: 32200
+      nodePort: 32201
   selector:
-    app: fronubet
-  type: NodePort
+    app: front
+  type: LoadBalancer

@@ -8,5 +8,5 @@ spec:
       storage: 1Gi
   accessModes:
     - ReadWriteOnce
-    - ReadOnlyMany
+    # - ReadOnlyMany
   storageClassName: mongo-sc
