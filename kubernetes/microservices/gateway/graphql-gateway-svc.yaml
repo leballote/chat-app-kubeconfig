@@ -8,7 +8,7 @@ spec:
   ports:
     - port: 4000
       protocol: TCP
-      targetPort: 4000
+      targetPort: graphql-port
       nodePort: 32100
   selector:
     app: graphql-gateway

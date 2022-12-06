@@ -9,12 +9,12 @@ spec:
     - port: 443
       name: https
       protocol: TCP
-      targetPort: 443
+      targetPort: https
       nodePort: 32200
     - port: 80
       name: http
       protocol: TCP
-      targetPort: 80
+      targetPort: http
       nodePort: 32201
   selector:
     app: front

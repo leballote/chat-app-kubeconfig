@@ -57,5 +57,8 @@ spec:
               mountPath: /etc/ssl/certs/
           ports:
             - containerPort: 80
-              name: web-port
+              name: http
+              protocol: TCP
+            - containerPort: 443
+              name: https
               protocol: TCP

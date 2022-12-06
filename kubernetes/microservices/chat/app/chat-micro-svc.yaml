@@ -8,7 +8,7 @@ spec:
   ports:
     - port: 6000
       protocol: TCP
-      targetPort: 6000
+      targetPort: chat-port
       nodePort: 32001
   selector:
     app: chat-micro
