@@ -42,5 +42,3 @@ data:
             proxy_set_header Connection "upgrade";
         }
     }
-  hola.txt: |
-    esta es una prueba
